@@ -136,7 +136,6 @@ Running our test on our new code gives us...
 
 {% highlight ruby %}
 [3] pry(main)> new_person.name = "The Terminator"
-=> "The Terminator"
 [4] pry(main)> new_person.name
 => "The Terminator"
 {% endhighlight %}
