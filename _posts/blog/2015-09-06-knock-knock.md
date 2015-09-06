@@ -24,8 +24,8 @@ That's what I thought when I heard blocks weren't objects. But it's true, blocks
 theory in an example:
 
 {% highlight ruby %}
-{ puts "Hello, world!" } #=> syntax error
-var = { puts "Hello, world!" } #=> syntax error
+{ puts "Hello, world!" } #=> SyntaxError
+var = { puts "Hello, world!" } #=> SyntaxError
 {% endhighlight %}
 
 Without having a method calling on the block, it doesn't get executed.
@@ -34,6 +34,7 @@ Let's go over the basic syntax of block usage. You have probably seen blocks mos
 
 {% highlight ruby %}
 array = [1, 2, 3, 4]
+
 array.all? { |num| num < 5 }
 #=> true
 
@@ -44,7 +45,7 @@ end
 #=> [2, 4]
 {% endhighlight %}
 
-As you can see here, the blocks are being called by the `all?` and 'select' methods. Blocks come in two forms. The first one we see in our `all?` example shows the block in `{}` form. Blocks can take an argument, which is passed as `|num|` in our example, and it executes the rest of the block for each element in the array. The second form of a block is the 'do...end' block. It works in the same way as our curly-bracket enclosed block, accepting an argument, and **executing the code in the block once for each element of the array**. So why have two ways to write a block?
+As you can see here, the blocks are being called by the `all?` and `select` methods. Blocks come in two forms. The first one we see in our `all?` example shows the block in `{}` form. Blocks can take an argument, which is passed as `|num|` in our example, and it **executes the rest of the block for each element in the array**. The second form of a block is the 'do...end' block. It works in the same way as our curly-bracket enclosed block, accepting an argument, and **executing the code in the block once for each element of the array**. So why have two ways to write a block?
 
 The answer is syntax. Typically, when we want execute a *multi-line* block, we want to use a 'do...end' block like we see with our select method. When we're executing *single* line blocks, we'll use a curly-bracket enclosed block.
 
@@ -60,7 +61,7 @@ Here's how you'd create a new proc:
 prc = Proc.new { |element| puts element }
 {% endhighlight %}
 
-The proc, *is* the block. When try to create a proc without a block, we get an error.
+The proc, *is* the block. When we try to create a proc without a block, we get an error.
 
 {% highlight ruby %}
 prc = Proc.new
@@ -83,7 +84,7 @@ end
 
 Let's take a look at this code. There's quite a lot of things going on here.
 
-* Line 1: Nothing new, we're creating a `Proc` object and storing it in a variable called `prc`.
-* Line 3: We've defined a method that takes `num1`, `num2`, and `&prc` as parameters. That's a new one; we'll go over it.
-* Lines 4-5: If `prc` is `nil` then return the result of `num1` plus `num2`. Pretty simple.
-* Lines 6-7: If `prc` is defined, then call the `call` method on `prc` and throw in `num1` and num2`. Okay, what does this `call` method do? Take a guess!
+* **Line 1**: Nothing new, we're creating a `Proc` object and storing it in a variable called `prc`.
+* **Line 3**: We've defined a method that takes `num1`, `num2`, and `&prc` as parameters. That's a new one; we'll go over it.
+* **Lines 4-5**: If `prc` is `nil` then return the result of `num1` plus `num2`. Pretty simple.
+* **Lines 6-7**: If `prc` is defined, then call the `call` method on `prc` and throw in `num1` and num2`. Okay, what does this `call` method do? Take a guess!
