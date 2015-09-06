@@ -102,7 +102,7 @@ The proc we passed in as `prc` is not `nil`, therefore, it executes line 7 by us
 
 Now you might have noticed that we're accepting one argument in our `prc` variable, but we're passing two parameters to it during the call. Good catch! However, that's a neat feature of procs. They don't care that we're throwing in the wrong number of variables. It just executes the call using the first `n` number of parameters it needs to execute it. The proc call won't work if you don't supply enough arguments.
 
-Let's move on, but this time, let's add one new character in our `add_or_subtract` definition.
+Cool, awesome. Now let's move on, but this time, let's add one new character in our `add_or_subtract` definition.
 
 {% highlight ruby %}
 prc = Proc.new { |num| num - 5 }
@@ -118,14 +118,16 @@ end
 
 <span style="color: gray">*:If you don't see it, shame on you! It's in front of the `prc` on line 3. The squiggly character called an ampersand.*</span>
 
-What this does is it calls the `to_proc` method on the variable. Our previous example worked, but what if we don't always have a proc object to pass in as an argument? Or what if we wanted to do something other than subtract the first number by 5? We would have to create yet another proc object and then pass that in as an argument. There must be a handier way to do it. And there is! It's the ampersand symbol that allows us to do just that. So let's say we don't have an explicit proc object to pass into the method, but we do know what we want to do inside the block. We can write it like this:
+What this does is it calls the `to_proc` method on the variable. Our previous example worked, but what if we don't always have a proc object to pass in as an argument? Or what if we wanted to do something other than subtract the first number by 5? We would have to create yet another proc object and then pass that in as an argument. There must be a handier way to do it. And there is! It's the ampersand symbol that allows us to do just that.
+
+So let's say we don't have an explicit proc object to pass into the method, but we do know what we want to do inside the block. We can write it like this:
 
 {% highlight ruby %}
 add_or_subtract(5, 4) { |num| num - 2 }
 #=> 3
 {% endhighlight %}
 
-The ampersand makes passing the proc in as a variable optional, and looks for a block following the method call. If there is, then it stores the block into `prc` so that we can use it for something else if we wanted to. If there isn't, then
+The ampersand makes passing the proc in as a variable optional, and looks for a block following the method call. If there is, then it stores the block into `prc` so that we can use it for something else if we wanted to. If there isn't, then it remains as `nil`.
 
 Similarly, we might never create a proc object before calling our method, and sometimes we want the prc to default into something if it doesn't have a block following it. Here's an example:
 
@@ -140,7 +142,8 @@ array.sort
 {% endhighlight %}
 
 Here's what's kind of going on behind the scenes:
-<span style="color: gray">*:This implementation of sort below is bubble sort. Ruby's built in sort method doesn't use bubble sort, but for demonstration purposes, we'll be using bubble sort*</span>
+
+<span style="color: gray">*:This implementation of sort below is bubble sort. Ruby's built in sort method doesn't use bubble sort, but for demonstration purposes, we'll be using bubble sort.*</span>
 
 {% highlight ruby %}
 class Array
@@ -165,7 +168,7 @@ end
 
 Don't worry if you don't know what that does. The only thing you should take from our sort example is that it takes an `&prc` parameter just like our method, and it uses the passed proc if it's not `nil`. If it is `nil`, we set it to our own default proc. Because we have it set up like this, we don't ever have to explicitly create a proc object before calling the method. Pretty neat.
 
-You might have also noticed that we never `return` inside a block. That's because when we do something like
+You might have also noticed that we never `return` inside a block. That's because when we do, it'll return an error.
 
 {% highlight ruby %}
 array = [2, 4, 5, 1, 3]
@@ -176,7 +179,7 @@ array.sort { |num1, num2| return num1 <=> num2 }
 
 Ruby doesn't expect us to `return` inside a block. The return value is implicit, meaning `array.sort { |num1, num2| num1 <=> num2 }` will implicitly return -1, 0, or 1.
 
-<span style="color: gray">*:There is a way to explicitly return from a proc using something called a lambda. However, I wont be going over lambdas in this post.*</span>
+<span style="color: gray">*::There is a way to explicitly return from a proc using something called a lambda. However, I wont be going over lambdas in this post.*</span>
 
 Now that we've come this far, let's go over some of the properties of procs and blocks.
 
@@ -238,4 +241,4 @@ add_or_subtract(5, 3) { |num| num - 5 }
 
 You can see through this that `yield` needs to meet pretty specific conditions, and if it doesn't will throw errors. One advantage to yield, however, is that it processes the block (almost 2x) faster than a proc does. Which I guess is cool...
 
-So there you have it! If I left you hanging with questions, feel free to contact me. I'm available by e-mail: hyungchulcho93@gmail.com. Ciao!
+So there you have it! Procs and blocks are extremely useful once you understand how to implement it, but they can be a rather confusing topic for beginners. If I left you hanging with questions, feel free to contact me. I'm available by e-mail: hyungchulcho93@gmail.com. Ciao!
