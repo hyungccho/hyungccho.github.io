@@ -12,7 +12,7 @@ date: 2015-09-05T15:39:55-04:00
 
 How does an `attr_reader` differ from an `attr_writer`, but more specifically... what do they do? I remember asking myself
 this question when I was introduced to classes in Ruby. I'll be going over their exact functions and purposes in a second,
-but here's a short and sweet explanation:
+but here's a short explanation:
 
 When I make a card transaction of let's say $1 (pretty sweet, I know), the merchant needs to **first** check if I have
 sufficient funds in my bank account, and **second** subtract that dollar from my account and add it onto his account.
