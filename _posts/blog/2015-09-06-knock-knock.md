@@ -138,6 +138,7 @@ array.sort
 {% endhighlight %}
 
 Here's what's kind of going on behind the scenes:
+<span style="color: gray">*:This implementation of sort below is bubble sort. Ruby's built in sort method doesn't use bubble sort, but for demonstration purposes, we'll be using bubble sort*</span>
 
 {% highlight ruby %}
 class Array
@@ -159,3 +160,5 @@ class Array
   end
 end
 {% endhighlight %}
+
+Don't worry if you don't know what that does. The only thing you should take from our sort example is that it takes an `&prc` parameter just like our method, and it uses the passed proc if it's not `nil`. If it is `nil`, we set it to our own default proc. Because we have it set up like this, we don't ever have to explicitly create a proc object before calling the method. Pretty neat.
