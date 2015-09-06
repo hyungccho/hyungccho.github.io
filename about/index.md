@@ -1,26 +1,30 @@
 ---
 layout: page
-title: About the Jekyll Theme
-excerpt: "So Simple is a responsive Jekyll theme for your words and images."
+title: Can you outrun me?
+excerpt:
 modified: 2014-08-08T19:44:38.564948-04:00
 image:
-  feature: so-simple-sample-image-4.jpg
-  credit: WeGraphics
-  creditlink: http://wegraphics.net/downloads/free-ultimate-blurred-background-pack/
+  feature: background1.jpeg
+  credit:
+  creditlink:
 ---
 
-Looking for a simple, responsive, theme for your Jekyll powered blog? Well look no further. Here be **So Simple Theme**, the follow up to [**Minimal Mistakes**](http://mmistakes.github.io/minimal-mistakes) --- by designer slash illustrator [Michael Rose](http://mademistakes.com).
+If you had a pair of fresh Nike's, a coach training you, and your family cheering for you, could you outrun me? You might, but I'll
+never believe it.
 
-## So Simple Theme is all about:
+My mentality is simple. I might be slower, I might not be as equipped, I might not have your support, but that won't ever stop me
+from trying. It's ridiculous how often we get ahead of ourselves, and stop ourselves from losing or failing. The true failure
+lies in never having attempted it. How can anyone go about living their lives without failing? Accept it, learn from it, just to fail
+again. Here's a little bit about me:
 
-* Responsive templates. Looking good on mobile, tablet, and desktop.
-* Gracefully degrading in older browsers. Compatible with Internet Explorer 9+ and all modern browsers.
-* Minimal embellishments and subtle animations.
-* Optional large feature images for posts and pages.
-* [Custom 404 page]({{ site.url }}/404.html) to get you started.
-* [Simple site search](https://github.com/christian-fei/Simple-Jekyll-Search)
-* Support for Disqus Comments
+##My name is Hyung.
 
-<a markdown="0" href="{{ site.url }}/theme-setup" class="btn">Install So Simple Theme</a>
+* I identify as an Asian American.
+* I've lived in the states since I was three.
+* I'm currently 22 years old.
+* I'm currently attending App Academy.
+* I love sports.
+* I have a loving girlfriend, Esther.
+* I have an adorable puppy named Mimi.
 
-[^1]: Example: *domain.com/category-name/post-title*
+#####Let's get cozy: hyungchulcho93@gmail.com.

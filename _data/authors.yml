@@ -1,20 +1,10 @@
 # Authors
 
-billy_rick:
-  name: Billy Rick
-  web: http://thewhip.com
-  email: billy@rick.com
-  bio: "What do you want, jewels? I am a very extravagant man."
+hyung_cho:
+  name: Hyung Cho
+  web: https://www.hyungccho.github.com
+  email: hyungccho93@gmail.com
+  bio: "An aspiring developer with almost no coding experience embarking on a three month journey through App Academy!"
   avatar: bio-photo-2.jpg
-  twitter: extravagantman
   google:
-    plus: BillyRick
-
-cornelius_fiddlebone:
-  name: Cornelius Fiddlebone
-  email: cornelius@thewhip.com
-  bio: "I ordered what?"
-  avatar: bio-photo.jpg
-  twitter: rhymeswithsackit
-  google:
-    plus: CorneliusFiddlebone
+    plus: hyungccho

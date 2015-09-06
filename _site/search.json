@@ -1,0 +1,69 @@
+[
+
+  
+    {
+      "title"			: "Hello, world!",
+      "link"			: "http://localhost:4000/blog/hello-world/",
+      "excerpt"		: ""
+    }
+  
+
+  
+    ,{
+      "title"			: "reader, writer, and accessor",
+      "link"			: "http://localhost:4000/blog/attr-and-initialize/",
+      "excerpt"		: ""
+    }
+  
+
+  
+    ,{
+      "title"			: "MathJax Example",
+      "link"			: "http://localhost:4000/blog/mathjax-example/",
+      "excerpt"		: ""
+    }
+  
+
+  
+    ,{
+      "title"			: "Hello World",
+      "link"			: "http://localhost:4000/blog/hello-world/",
+      "excerpt"		: ""
+    }
+  
+
+
+
+  
+
+  
+
+  
+
+  
+    ,{
+      "title"			: "Can you outrun me?",
+      "link"			: "http://localhost:4000/about/",
+      "excerpt"		: ""
+    }
+  
+
+  
+
+  
+    ,{
+      "title"			: "Theme Setup",
+      "link"			: "http://localhost:4000/theme-setup/",
+      "excerpt"		: "Instructions on how to install and customize the Jekyll theme So Simple."
+    }
+  
+
+  
+
+  
+
+  
+
+  
+
+]

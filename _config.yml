@@ -1,11 +1,12 @@
 # Site wide configuration
 
-title: Site Title
+title: Coder.life
 locale: en_US
-description: Describe your website here.
+description: A Github blog for all...most all things Ruby!
 logo: site-logo.png
 search: true
-url: http://localhost:4000
+# url: http://localhost:4000
+url: http://github.hyungccho.io
 
 # Jekyll configuration
 
@@ -33,9 +34,9 @@ exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.
 
 # Site owner
 owner:
-  name: Your Name
-  avatar: bio-photo.jpg
-  email: you@email.com
+  name: Hyung C Cho
+  avatar: draft1.jpg
+  email: hyungccho93@gmail.com
   disqus-shortname:
   twitter: #username
   facebook: #username

@@ -1,0 +1,304 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>reader, writer, and accessor &#8211; Coder.life</title>
+
+<meta name="keywords" content="">
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="reader, writer, and accessor">
+
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://localhost:4000/images/site-logo.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="reader, writer, and accessor">
+
+<meta property="og:url" content="http://localhost:4000/blog/attr-and-initialize/">
+<meta property="og:site_name" content="Coder.life">
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/blog/attr-and-initialize/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Coder.life Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+<!-- Webfonts -->
+<script src="https://use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		        
+		    
+		    <li><a href="http://localhost:4000/about/" >About</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="http://localhost:4000/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	<div class="wrap">
+      
+  		<a href="http://localhost:4000/" class="site-logo" rel="home" title="Coder.life"><img src="http://localhost:4000/images/site-logo.png" width="200" height="200" alt="Coder.life logo" class="animated fadeInDown"></a>
+      
+      <h1 class="site-title animated fadeIn"><a href="http://localhost:4000/">Coder.life</a></h1>
+		<h2 class="site-description animated fadeIn" itemprop="description">A Github blog for all...most all things Ruby!</h2>
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"></span>
+        
+          <h1 class="entry-title">reader, writer, and accessor</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        
+        
+          <img src="http://localhost:4000/images/draft1.jpg" class="bio-photo" alt="Hyung C Cho bio photo"></a>
+        
+        <span class="author vcard">By <span class="fn">Hyung C Cho</span></span>
+        <span class="entry-date date published"><time datetime="2015-09-05T12:39:55-07:00"><i class="fa fa-calendar-o"></i> September 05, 2015</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <p>How does an <code>attr_reader</code> differ from an <code>attr_writer</code>, but more specifically… what do they do? I remember asking myself
+this question when I was introduced to classes in Ruby. I’ll be going over their exact functions and purposes in a second,
+but here’s a short and sweet explanation:</p>
+
+<p>When I make a card transaction of let’s say $1 (pretty sweet, I know), the merchant needs to <strong>first</strong> check if I have
+sufficient funds in my bank account, and <strong>second</strong> subtract that dollar from my account and add it onto his account.</p>
+
+<p>The first operation refers to a reader method. In almost every class, there many be some if not a bunch of information
+we need to be able to ‘read’ in order to complete another operation. If our merchant is not able to read that I have enough
+money in the bank, he won’t be able to charge me. O’ the sorrow!</p>
+
+<p>The second operation refers to a writer method. Same with the reader, there are information pertaining to a particular class
+that needs to be changed, or rerouted. In the case of our transaction, without being able to <strong>rewrite</strong> the money in my bank,
+there’s no way that he’d be able to take… O’.. the sorrow..</p>
+
+<h5 id="so-how-does-this-relate-to-ruby">So how does this relate to Ruby..?</h5>
+
+<p>It turns out that, because these two types of methods are so frequently used—the developers created simpler ways to write them.
+And this is where <code>attr_reader</code>, <code>attr_writer</code>, and <code>attr_accessor</code> come in.</p>
+
+<p>To explain this better, let’s create an empty <code>Person</code> class and initialize an instance of it.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Person</span>
+<span class="k">end</span>
+
+<span class="n">new_person</span> <span class="o">=</span> <span class="no">Person</span><span class="o">.</span><span class="n">new</span></code></pre></div>
+
+<h3 id="attrwriter">attr_writer</h3>
+<p>If I wanted to set <code>new_person</code>’s name to something, I might try <code>new_person.name = "The Terminator"</code>. But let’s see what happens
+when we try that.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">new_person</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;The Terminator&quot;</span>
+<span class="ss">NoMethodError</span><span class="p">:</span> <span class="n">undefined</span> <span class="nb">method</span> <span class="nb">name</span><span class="o">=</span><span class="s1">&#39; for #&lt;Person:0x007feb0c2a1468&gt;</span>
+<span class="s1">from (pry):4:in __pry__&#39;</span></code></pre></div>
+
+<p>Okay, but why? I mentioned earlier that we needed to a way to access information from an object, and that the reader and writer methods
+allow us to do just that.</p>
+
+<p>Let’s change our <code>Person</code> to carry some of that information. Here’s the first way to make a writer method:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Person</span>
+  <span class="k">def</span> <span class="nf">name</span><span class="o">=</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+    <span class="vi">@name</span> <span class="o">=</span> <span class="nb">name</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div>
+
+<p>and here’s Ruby’s shortened ‘magical’ way of writing EXACTLY the former:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Person</span>
+  <span class="kp">attr_writer</span> <span class="ss">:name</span>
+<span class="k">end</span></code></pre></div>
+
+<p><span style="color: gray"><em>:If you’re confused on what the ‘@’ symbol is doing in front of name, it’s basically a Ruby notation for an ‘instance variable’which means that this variable exists in the scope of the whole object, not just within the writer method.</em></span></p>
+
+<p><span style="color: gray"><em>::In Ruby, parameters passed to methods don’t have to be within a parentheses. With that said, our <code>def name=(name)</code> can be translated into <code>new_person.name=("The Terminator")</code> or <code>new_person.name = "The Terminator"</code>.</em></span></p>
+
+<p>Awesome, now that we have that taken care of, let’s go give this guy a name.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">new_person</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;The Terminator&quot;</span>
+<span class="o">=&gt;</span> <span class="s2">&quot;The Terminator&quot;</span></code></pre></div>
+
+<p>Cool. Neat. Sweet. Let’s ask him what his name is.</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">[</span><span class="mi">4</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">new_person</span><span class="o">.</span><span class="n">name</span>
+<span class="ss">NoMethodError</span><span class="p">:</span> <span class="n">undefined</span> <span class="nb">method</span> <span class="nb">name</span><span class="s1">&#39; for #&lt;Person:0x007f8e4330a2e0 @name=&quot;The Terminator&quot;&gt;</span>
+<span class="s1">from (pry):6:in __pry__&#39;</span></code></pre></div>
+
+<p>I don’t believe you. Ruby must be lying!</p>
+
+<p>Not really. Sure we can give our <code>new_person</code> a name, but we still don’t have anything set up to
+retrieve his name. It just kind of floats out there for no damn reason. Let’s go write that reader method.</p>
+
+<h3 id="attrreader">attr_reader</h3>
+<p>There are once again, two ways to write a reader method. Here’s the first:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Person</span>
+  <span class="kp">attr_writer</span> <span class="ss">:name</span>
+
+  <span class="k">def</span> <span class="nf">name</span>
+    <span class="vi">@name</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div>
+
+<p>And here’s the shorter, sweeter way:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Person</span>
+  <span class="kp">attr_writer</span> <span class="ss">:name</span>
+  <span class="kp">attr_reader</span> <span class="ss">:name</span>
+<span class="k">end</span></code></pre></div>
+
+<p>You can see that calling <code>new_person.name</code> is reaching in for an ‘instance variable’ <code>@name</code>, and that’s how other objects
+‘read’ information from your <code>Person</code> class. Let’s give it one last whirl.</p>
+
+<p>We first have to give it writer and reader methods…</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Person</span>
+  <span class="kp">attr_accessor</span> <span class="ss">:name</span>
+<span class="k">end</span></code></pre></div>
+
+<p>What the hell is that, dude! You never told me about an <code>attr_accessor</code>! I know, I know, relax.</p>
+
+<h3 id="attraccessor">attr_accessor</h3>
+
+<p>An <code>attr_accessor :name</code> is the same thing as writing <code>attr_reader :name</code> and <code>attr_writer :name</code>, it’s another ‘magical’
+way of writing both of those in one line. It so happens that information we need to retrieve often gets manipulated, and vise
+versa. Therefore, Ruby creates an easier and faster way to create both methods with a simple <code>attr_accessor</code>. Thanks Ruby!</p>
+
+<p>Running our test on our new code gives us…</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">new_person</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;The Terminator&quot;</span>
+<span class="o">=&gt;</span> <span class="s2">&quot;The Terminator&quot;</span>
+<span class="o">[</span><span class="mi">4</span><span class="o">]</span> <span class="n">pry</span><span class="p">(</span><span class="n">main</span><span class="p">)</span><span class="o">&gt;</span> <span class="n">new_person</span><span class="o">.</span><span class="n">name</span>
+<span class="o">=&gt;</span> <span class="s2">&quot;The Terminator&quot;</span></code></pre></div>
+
+<p>Hurrah! It finally works! Now go and give our Terminator some extra features. Ayl bi bawk.</p>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://localhost:4000/blog/mathjax-example/" class="btn" title="MathJax Example">Previous</a>
+      
+      
+        <a href="http://localhost:4000/blog/hello-world/" class="btn" title="Hello, world!">Next</a>
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2015 Hyung C Cho. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<div class="social-icons">
+	
+	
+	
+	
+	
+	
+	
+	
+	
+  
+	
+  <a href="http://localhost:4000/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://localhost:4000';
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+<title type="text">Coder.life</title>
+<generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
+<link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
+<link rel="alternate" type="text/html" href="http://localhost:4000" />
+<updated>2015-09-05T23:22:49-07:00</updated>
+<id>http://localhost:4000/</id>
+<author>
+  <name>Hyung C Cho</name>
+  <uri>http://localhost:4000/</uri>
+  <email>hyungccho93@gmail.com</email>
+</author>
+
+
+  
+
+<entry>
+  <title type="html"><![CDATA[Hello, world!]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/hello-world/" />
+  <id>http://localhost:4000/blog/hello-world</id>
+  <published>2015-09-05T12:39:55-07:00</published>
+  <updated>2015-09-05T12:39:55-07:00</updated>
+  <author>
+    <name>Hyung C Cho</name>
+    <uri>http://localhost:4000</uri>
+    <email>hyungccho93@gmail.com</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;I’m now two weeks into my 12-week coding bootcamp at App Academy, and the experience thus far has been amazing. I’m loving all
+the new additions to the curriculum to make it more difficult, and meeting everyone involved has been nothing but fantastic. We keep
+a required blog for App Academy through Tumblr, but I’ve decided to try and start my own technical blog on coding.&lt;/p&gt;
+
+&lt;p&gt;I’ll be using GitHub pages along with Jekyll to upload posts and update my blog. I’d just found out about this feature, and I have to say
+that I’m impressed. The implementation is pretty seamless, and straight forward enough for a beginner like me to start with little to no
+trouble.&lt;/p&gt;
+
+&lt;p&gt;If you’re interested in chatting, whether it’s about my App Academy experience, or coding, or anything… Don’t hesitate to contact me!
+You can reach me through e-mail: hyungchulcho93@gmail.com!&lt;/p&gt;
+
+&lt;h2 id=&quot;onward-matey&quot;&gt;Onward, matey!&lt;/h2&gt;
+
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/hello-world/&quot;&gt;Hello, world!&lt;/a&gt; was originally published by Hyung C Cho at &lt;a href=&quot;http://localhost:4000&quot;&gt;Coder.life&lt;/a&gt; on September 05, 2015.&lt;/p&gt;
+  </content>
+</entry>
+
+
+  
+
+<entry>
+  <title type="html"><![CDATA[reader, writer, and accessor]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/attr-and-initialize/" />
+  <id>http://localhost:4000/blog/attr-and-initialize</id>
+  <published>2015-09-05T12:39:55-07:00</published>
+  <updated>2015-09-05T12:39:55-07:00</updated>
+  <author>
+    <name>Hyung C Cho</name>
+    <uri>http://localhost:4000</uri>
+    <email>hyungccho93@gmail.com</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;How does an &lt;code&gt;attr_reader&lt;/code&gt; differ from an &lt;code&gt;attr_writer&lt;/code&gt;, but more specifically… what do they do? I remember asking myself
+this question when I was introduced to classes in Ruby. I’ll be going over their exact functions and purposes in a second,
+but here’s a short and sweet explanation:&lt;/p&gt;
+
+&lt;p&gt;When I make a card transaction of let’s say $1 (pretty sweet, I know), the merchant needs to &lt;strong&gt;first&lt;/strong&gt; check if I have
+sufficient funds in my bank account, and &lt;strong&gt;second&lt;/strong&gt; subtract that dollar from my account and add it onto his account.&lt;/p&gt;
+
+&lt;p&gt;The first operation refers to a reader method. In almost every class, there many be some if not a bunch of information
+we need to be able to ‘read’ in order to complete another operation. If our merchant is not able to read that I have enough
+money in the bank, he won’t be able to charge me. O’ the sorrow!&lt;/p&gt;
+
+&lt;p&gt;The second operation refers to a writer method. Same with the reader, there are information pertaining to a particular class
+that needs to be changed, or rerouted. In the case of our transaction, without being able to &lt;strong&gt;rewrite&lt;/strong&gt; the money in my bank,
+there’s no way that he’d be able to take… O’.. the sorrow..&lt;/p&gt;
+
+&lt;h5 id=&quot;so-how-does-this-relate-to-ruby&quot;&gt;So how does this relate to Ruby..?&lt;/h5&gt;
+
+&lt;p&gt;It turns out that, because these two types of methods are so frequently used—the developers created simpler ways to write them.
+And this is where &lt;code&gt;attr_reader&lt;/code&gt;, &lt;code&gt;attr_writer&lt;/code&gt;, and &lt;code&gt;attr_accessor&lt;/code&gt; come in.&lt;/p&gt;
+
+&lt;p&gt;To explain this better, let’s create an empty &lt;code&gt;Person&lt;/code&gt; class and initialize an instance of it.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Person&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;new_person&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Person&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;attrwriter&quot;&gt;attr_writer&lt;/h3&gt;
+&lt;p&gt;If I wanted to set &lt;code&gt;new_person&lt;/code&gt;’s name to something, I might try &lt;code&gt;new_person.name = &quot;The Terminator&quot;&lt;/code&gt;. But let’s see what happens
+when we try that.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_person&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;The Terminator&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;NoMethodError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;undefined&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;method&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39; for #&amp;lt;Person:0x007feb0c2a1468&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;from (pry):4:in __pry__&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Okay, but why? I mentioned earlier that we needed to a way to access information from an object, and that the reader and writer methods
+allow us to do just that.&lt;/p&gt;
+
+&lt;p&gt;Let’s change our &lt;code&gt;Person&lt;/code&gt; to carry some of that information. Here’s the first way to make a writer method:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Person&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;and here’s Ruby’s shortened ‘magical’ way of writing EXACTLY the former:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Person&lt;/span&gt;
+  &lt;span class=&quot;kp&quot;&gt;attr_writer&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:name&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;span style=&quot;color: gray&quot;&gt;&lt;em&gt;:If you’re confused on what the ‘@’ symbol is doing in front of name, it’s basically a Ruby notation for an ‘instance variable’which means that this variable exists in the scope of the whole object, not just within the writer method.&lt;/em&gt;&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span style=&quot;color: gray&quot;&gt;&lt;em&gt;::In Ruby, parameters passed to methods don’t have to be within a parentheses. With that said, our &lt;code&gt;def name=(name)&lt;/code&gt; can be translated into &lt;code&gt;new_person.name=(&quot;The Terminator&quot;)&lt;/code&gt; or &lt;code&gt;new_person.name = &quot;The Terminator&quot;&lt;/code&gt;.&lt;/em&gt;&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Awesome, now that we have that taken care of, let’s go give this guy a name.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_person&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;The Terminator&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;The Terminator&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Cool. Neat. Sweet. Let’s ask him what his name is.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_person&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;NoMethodError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;undefined&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;method&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39; for #&amp;lt;Person:0x007f8e4330a2e0 @name=&amp;quot;The Terminator&amp;quot;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;from (pry):6:in __pry__&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;I don’t believe you. Ruby must be lying!&lt;/p&gt;
+
+&lt;p&gt;Not really. Sure we can give our &lt;code&gt;new_person&lt;/code&gt; a name, but we still don’t have anything set up to
+retrieve his name. It just kind of floats out there for no damn reason. Let’s go write that reader method.&lt;/p&gt;
+
+&lt;h3 id=&quot;attrreader&quot;&gt;attr_reader&lt;/h3&gt;
+&lt;p&gt;There are once again, two ways to write a reader method. Here’s the first:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Person&lt;/span&gt;
+  &lt;span class=&quot;kp&quot;&gt;attr_writer&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:name&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;name&lt;/span&gt;
+    &lt;span class=&quot;vi&quot;&gt;@name&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;And here’s the shorter, sweeter way:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Person&lt;/span&gt;
+  &lt;span class=&quot;kp&quot;&gt;attr_writer&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:name&lt;/span&gt;
+  &lt;span class=&quot;kp&quot;&gt;attr_reader&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:name&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;You can see that calling &lt;code&gt;new_person.name&lt;/code&gt; is reaching in for an ‘instance variable’ &lt;code&gt;@name&lt;/code&gt;, and that’s how other objects
+‘read’ information from your &lt;code&gt;Person&lt;/code&gt; class. Let’s give it one last whirl.&lt;/p&gt;
+
+&lt;p&gt;We first have to give it writer and reader methods…&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Person&lt;/span&gt;
+  &lt;span class=&quot;kp&quot;&gt;attr_accessor&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:name&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;What the hell is that, dude! You never told me about an &lt;code&gt;attr_accessor&lt;/code&gt;! I know, I know, relax.&lt;/p&gt;
+
+&lt;h3 id=&quot;attraccessor&quot;&gt;attr_accessor&lt;/h3&gt;
+
+&lt;p&gt;An &lt;code&gt;attr_accessor :name&lt;/code&gt; is the same thing as writing &lt;code&gt;attr_reader :name&lt;/code&gt; and &lt;code&gt;attr_writer :name&lt;/code&gt;, it’s another ‘magical’
+way of writing both of those in one line. It so happens that information we need to retrieve often gets manipulated, and vise
+versa. Therefore, Ruby creates an easier and faster way to create both methods with a simple &lt;code&gt;attr_accessor&lt;/code&gt;. Thanks Ruby!&lt;/p&gt;
+
+&lt;p&gt;Running our test on our new code gives us…&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_person&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;The Terminator&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;The Terminator&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_person&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;The Terminator&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Hurrah! It finally works! Now go and give our Terminator some extra features. Ayl bi bawk.&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/attr-and-initialize/&quot;&gt;reader, writer, and accessor&lt;/a&gt; was originally published by Hyung C Cho at &lt;a href=&quot;http://localhost:4000&quot;&gt;Coder.life&lt;/a&gt; on September 05, 2015.&lt;/p&gt;
+  </content>
+</entry>
+
+
+  
+
+<entry>
+  <title type="html"><![CDATA[MathJax Example]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/mathjax-example/" />
+  <id>http://localhost:4000/blog/mathjax-example</id>
+  <published>2015-08-10T05:08:50-07:00</published>
+  <updated>2015-08-10T05:08:50-07:00</updated>
+  <author>
+    <name>Hyung C Cho</name>
+    <uri>http://localhost:4000</uri>
+    <email>hyungccho93@gmail.com</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;&lt;a href=&quot;http://www.mathjax.org/&quot;&gt;MathJax&lt;/a&gt; is a simple way of including Tex/LaTex/MathML based mathematics in HTML webpages. To get up and running you need to include the MathJax script in the header of your github pages page, and then write some maths. For LaTex, there are two delimiters you need to know about, one for block or displayed mathematics &lt;code&gt;\[ ... \]&lt;/code&gt;, and the other for inline mathematics &lt;code&gt;\( ... \)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;usage&quot;&gt;Usage&lt;/h2&gt;
+
+&lt;p&gt;To enable MathJax support be sure Kramdown is your Markdown flavor of choice and MathJax is set to true in your &lt;code&gt;_config.yml&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;markdown: kramdown
+mathjax: true
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;Here is an example MathJax inline rendering \\( 1/x^{2} \\), and here is a block rendering: 
+\\[ \frac{1}{n^{2}} \\]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here is an example MathJax inline rendering \( 1/x^{2} \), and here is a block rendering: 
+\[ \frac{1}{n^{2}} \]&lt;/p&gt;
+
+&lt;p&gt;The only thing to look out for is the escaping of the backslash when using markdown, so the delimiters become &lt;code&gt;\\[ ... \\]&lt;/code&gt; and &lt;code&gt;\\( ... \\)&lt;/code&gt; for inline and block maths respectively.&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/mathjax-example/&quot;&gt;MathJax Example&lt;/a&gt; was originally published by Hyung C Cho at &lt;a href=&quot;http://localhost:4000&quot;&gt;Coder.life&lt;/a&gt; on August 10, 2015.&lt;/p&gt;
+  </content>
+</entry>
+
+
+  
+
+<entry>
+  <title type="html"><![CDATA[Hello World]]></title>
+  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/hello-world/" />
+  <id>http://localhost:4000/blog/hello-world</id>
+  <published>2014-08-08T12:39:55-07:00</published>
+  <updated>2014-08-08T12:39:55-07:00</updated>
+  <author>
+    <name>Hyung C Cho</name>
+    <uri>http://localhost:4000</uri>
+    <email>hyungccho93@gmail.com</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;You’ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory - edit this post and re-build (or run with the &lt;code&gt;-w&lt;/code&gt; switch) to see your changes!
+To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention: YYYY-MM-DD-name-of-post.ext.&lt;/p&gt;
+
+&lt;h2 id=&quot;sample-heading&quot;&gt;Sample Heading&lt;/h2&gt;
+
+&lt;h3 id=&quot;sample-heading-2&quot;&gt;Sample Heading 2&lt;/h3&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Tom&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &amp;#39;Hi, Tom&amp;#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;.&lt;/p&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/hello-world/&quot;&gt;Hello World&lt;/a&gt; was originally published by Hyung C Cho at &lt;a href=&quot;http://localhost:4000&quot;&gt;Coder.life&lt;/a&gt; on August 08, 2014.&lt;/p&gt;
+  </content>
+</entry>
+
+</feed>
