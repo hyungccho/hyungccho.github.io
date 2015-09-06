@@ -44,9 +44,8 @@ If I wanted to set `new_person`'s name to something, I might try `new_person.nam
 when we try that.
 
 {% highlight ruby %}
-[3] pry(main)> new_person.name = "The Terminator"
-NoMethodError: undefined method name=' for #<Person:0x007feb0c2a1468>
-from (pry):4:in __pry__'
+new_person.name = "The Terminator"
+#=> NoMethodError: undefined method name=' for #<Person:0x007feb0c2a1468>
 {% endhighlight %}
 
 Okay, but why? I mentioned earlier that we needed to a way to access information from an object, and that the reader and writer methods
@@ -76,16 +75,15 @@ end
 Awesome, now that we have that taken care of, let's go give this guy a name.
 
 {% highlight ruby %}
-[3] pry(main)> new_person.name = "The Terminator"
+new_person.name = "The Terminator"
 => "The Terminator"
 {% endhighlight %}
 
 Cool. Neat. Sweet. Let's ask him what his name is.
 
 {% highlight ruby %}
-[4] pry(main)> new_person.name
-NoMethodError: undefined method name' for #<Person:0x007f8e4330a2e0 @name="The Terminator">
-from (pry):6:in __pry__'
+new_person.name
+#=> NoMethodError: undefined method name' for #<Person:0x007f8e4330a2e0 @name="The Terminator">
 {% endhighlight %}
 
 I don't believe you. Ruby must be lying!
@@ -135,9 +133,9 @@ versa. Therefore, Ruby creates an easier and faster way to create both methods w
 Running our test on our new code gives us...
 
 {% highlight ruby %}
-[3] pry(main)> new_person.name = "The Terminator"
-[4] pry(main)> new_person.name
-=> "The Terminator"
+new_person.name = "The Terminator"
+new_person.name
+#=> "The Terminator"
 {% endhighlight %}
 
 Hurrah! It finally works! Now go and give our Terminator some extra features. Ayl bi bawk.
