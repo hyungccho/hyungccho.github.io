@@ -1,5 +1,7 @@
 #Jekyll & Github pages
 
+Check out the page! http://hyungccho.github.io
+
 This is a small personal blog mainly for putting out technical information
 about coding, and hopefully sometimes about my experience here in San Francisco
 with App Academy. I'll be using Jekyll and Github pages, along with 'So Simple Theme'
