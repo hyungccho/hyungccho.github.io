@@ -7,7 +7,7 @@ excerpt:
 tags: []
 image:
   feature:
-date: 2015-09-05T15:39:55-04:00
+date: 2015-09-04T15:39:55-04:00
 ---
 
 I'm now two weeks into my 12-week coding bootcamp at App Academy, and the experience thus far has been amazing. I'm loving all
