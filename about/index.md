@@ -15,7 +15,7 @@ never believe it.
 My mentality is simple. I might be slower, I might not be as equipped, I might not have your support, but that won't ever stop me
 from trying. It's ridiculous how often we get ahead of ourselves, and stop ourselves from losing or failing. The true failure
 lies in never having attempted it. How can anyone go about living their lives without failing? Accept it, learn from it, just to fail
-again. Here's a little bit about me:
+again. With that said, here's a couple little things about me:
 
 ##My name is Hyung.
 
