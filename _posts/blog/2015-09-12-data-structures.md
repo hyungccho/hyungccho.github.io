@@ -67,7 +67,7 @@ class Array
     self
   end
 end
-{% endhighlight }
+{% endhighlight %}
 end
 #Merge Sort
 #Quick Sort

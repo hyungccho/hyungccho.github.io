@@ -2,13 +2,13 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
 <title type="text">Coder.life</title>
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
-<link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2015-09-05T23:40:23-07:00</updated>
-<id>http://localhost:4000/</id>
+<link rel="self" type="application/atom+xml" href="http://hyungccho.github.io/feed.xml" />
+<link rel="alternate" type="text/html" href="http://hyungccho.github.io" />
+<updated>2015-09-10T22:10:46-07:00</updated>
+<id>http://hyungccho.github.io/</id>
 <author>
   <name>Hyung C Cho</name>
-  <uri>http://localhost:4000/</uri>
+  <uri>http://hyungccho.github.io/</uri>
   <email>hyungccho93@gmail.com</email>
 </author>
 
@@ -16,31 +16,304 @@
   
 
 <entry>
-  <title type="html"><![CDATA[Hello, world!]]></title>
-  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/hello-world/" />
-  <id>http://localhost:4000/blog/hello-world</id>
-  <published>2015-09-05T12:39:55-07:00</published>
-  <updated>2015-09-05T12:39:55-07:00</updated>
+  <title type="html"><![CDATA[Sort War!]]></title>
+  <link rel="alternate" type="text/html" href="http://hyungccho.github.io/blog/data-structures/" />
+  <id>http://hyungccho.github.io/blog/data-structures</id>
+  <published>2015-09-12T12:39:55-07:00</published>
+  <updated>2015-09-12T12:39:55-07:00</updated>
   <author>
     <name>Hyung C Cho</name>
-    <uri>http://localhost:4000</uri>
+    <uri>http://hyungccho.github.io</uri>
     <email>hyungccho93@gmail.com</email>
   </author>
   <content type="html">
-    &lt;p&gt;I’m now two weeks into my 12-week coding bootcamp at App Academy, and the experience thus far has been amazing. I’m loving all
-the new additions to the curriculum to make it more difficult, and meeting everyone involved has been nothing but fantastic. We keep
-a required blog for App Academy through Tumblr, but I’ve decided to try and start my own technical blog on coding.&lt;/p&gt;
+    &lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
 
-&lt;p&gt;I’ll be using GitHub pages along with Jekyll to upload posts and update my blog. I’d just found out about this feature, and I have to say
-that I’m impressed. The implementation is pretty seamless, and straight forward enough for a beginner like me to start with little to no
-trouble.&lt;/p&gt;
+&lt;p&gt;Being able to control the way data is sorted is a powerful tool for almost any situation. Let’s say that I own a company of five people. Christmas is approaching and our sales have climbed 1000% in the last year (That would be quite nice…). And as a bonus for hard work, I want to give my five loyal employees a bonus depending on how long they’ve been with the company. Okay, sounds simple enough. If I wanted to do this, I can possibly look in my employee database, and &lt;strong&gt;sort&lt;/strong&gt; them by the date they started working to determine their bonuses. But then again… It is only five people. I might just remember the general timeframe they came in. Fine. Let’s fast forward five years…&lt;/p&gt;
 
-&lt;p&gt;If you’re interested in chatting, whether it’s about my App Academy experience, or coding, or anything… Don’t hesitate to contact me!
-You can reach me through e-mail: hyungchulcho93@gmail.com!&lt;/p&gt;
+&lt;p&gt;…Now I have a hundred employees. See where this is going? There’s no way I’ll remember when everyone started working. Heck, I’m not sure I’ll know everyone’s name at this point. In this situation, having a nifty database of employees that I can sort would allow me to hand out bonuses accordingly come Christmas. Cool. But somewhere down the line…&lt;/p&gt;
 
-&lt;h2 id=&quot;onward-matey&quot;&gt;Onward, matey!&lt;/h2&gt;
+&lt;p&gt;…Maybe I have a million employees. That’s right. A million. At this point, I probably know all of five people who work in the company, and if I’m still responsible for determining and handing out bonuses, I’ve done something wrong. However, let’s say I’m still responsible, and I haven’t updated my sort method to accompany this growth. I’m using some slow sort method that might’ve worked fine when I had a hundred employees, but now I have a million. It takes a whole day’s worth of processing to sort properly. That is unacceptable. Bonuses must be given! Because of this, I’ll need a much faster sorting algorithm in work to match my needs. So let’s go over some of the basic and quite commonly used sorting algorithms.&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/hello-world/&quot;&gt;Hello, world!&lt;/a&gt; was originally published by Hyung C Cho at &lt;a href=&quot;http://localhost:4000&quot;&gt;Coder.life&lt;/a&gt; on September 05, 2015.&lt;/p&gt;
+&lt;p&gt;We won’t be focusing on time complexities in this post (We’ll go over Big O and each sorting algorithm’s respective time complexities in the next post), but rather just the underlying algorithms behind each sorting technique.&lt;/p&gt;
+
+&lt;p&gt;The four sorts we’ll do are &lt;strong&gt;insertion sort&lt;/strong&gt;, &lt;strong&gt;bubble sort&lt;/strong&gt;, &lt;strong&gt;merge sort&lt;/strong&gt;, and &lt;strong&gt;quick sort&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;insertion-sort&quot;&gt;Insertion Sort&lt;/h1&gt;
+
+&lt;p&gt;The idea behind insertion sort is to go through each element starting from the second element (the element at index 1), and iteratively compare it to preceding elements of the array until one of two conditions are met. When the current element finds a value that’s lower than it, or when it reaches the beginning of the data set, it &lt;strong&gt;inserts&lt;/strong&gt; itself into the respective position and the same loop commences again for the next value in the data. Here it is in Ruby:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;insertion_sort!&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;.self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;current_value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+
+      &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;current_value&lt;/span&gt;
+        &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+      &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;current_value&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;If you notice, the value at index &lt;code&gt;i&lt;/code&gt; represents our &lt;code&gt;current_value&lt;/code&gt;, and we iterate through all its preceding elements represented by a decrementing &lt;code&gt;j&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;bubble-sort&quot;&gt;Bubble Sort&lt;/h1&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;bubble_sort!&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;sorted&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;false&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;until&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sorted&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;sorted&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
+
+      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;times&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+          &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;sorted&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;false&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+    &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;end
+#Merge Sort
+#Quick Sort&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;http://hyungccho.github.io/blog/data-structures/&quot;&gt;Sort War!&lt;/a&gt; was originally published by Hyung C Cho at &lt;a href=&quot;http://hyungccho.github.io&quot;&gt;Coder.life&lt;/a&gt; on September 12, 2015.&lt;/p&gt;
+  </content>
+</entry>
+
+
+  
+
+<entry>
+  <title type="html"><![CDATA[Knock, knock!]]></title>
+  <link rel="alternate" type="text/html" href="http://hyungccho.github.io/blog/knock-knock/" />
+  <id>http://hyungccho.github.io/blog/knock-knock</id>
+  <published>2015-09-06T12:39:55-07:00</published>
+  <updated>2015-09-06T12:39:55-07:00</updated>
+  <author>
+    <name>Hyung C Cho</name>
+    <uri>http://hyungccho.github.io</uri>
+    <email>hyungccho93@gmail.com</email>
+  </author>
+  <content type="html">
+    &lt;p&gt;Who’s there?&lt;/p&gt;
+
+&lt;p&gt;…Blocks, and procs!&lt;/p&gt;
+
+&lt;p&gt;You might have already heard the saying that everything in Ruby is an object. Ah, yes.. The beauty of objects and our ability
+to manipulate them fascinates me. Why are you looking at me like that? Are you trying to say I’m wrong? What? Not EVERYTHING in
+Ruby is an object? LIAR!&lt;/p&gt;
+
+&lt;h1 id=&quot;blocks&quot;&gt;Blocks&lt;/h1&gt;
+
+&lt;p&gt;That’s what I thought when I heard blocks weren’t objects. But it’s true, blocks technically AREN’T objects in Ruby. Let’s test this
+theory in an example:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hello, world!&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; SyntaxError&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hello, world!&amp;quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; SyntaxError&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Without having a method calling on the block, it doesn’t get executed.&lt;/p&gt;
+
+&lt;p&gt;Let’s go over the basic syntax of block usage. You have probably seen blocks used mostly in this form:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;all?&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; true&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;new_num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_num&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; 2, 3, 4, 5&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;As you can see here, the blocks are being called by the &lt;code&gt;all?&lt;/code&gt; and &lt;code&gt;each&lt;/code&gt; methods. Blocks come in two forms. The first one we see in our &lt;code&gt;all?&lt;/code&gt; example shows the block in &lt;code&gt;{}&lt;/code&gt; form. Blocks can take an argument, which is passed as &lt;code&gt;|num|&lt;/code&gt; in our example, and it &lt;strong&gt;executes the rest of the block for each element in the array&lt;/strong&gt;. The second form of a block is the &lt;code&gt;do...end&lt;/code&gt; block. It works in the same way as our curly-bracket enclosed block, accepting an argument, and &lt;strong&gt;executing the code in the block once for each element of the array&lt;/strong&gt;. So why have two ways to write a block?&lt;/p&gt;
+
+&lt;p&gt;The answer is syntax. Typically, when we want execute a &lt;em&gt;multi-line&lt;/em&gt; block, we want to use a &lt;code&gt;do...end&lt;/code&gt; block like we see with our each method. When we’re executing &lt;em&gt;single&lt;/em&gt; line blocks, we’ll use a curly-bracket enclosed block.&lt;/p&gt;
+
+&lt;p&gt;Okay, well I get it. But if blocks aren’t objects, they can’t be utilized for anything else other than when methods call it. It seems useful sure, but what’s the big deal? Why doesn’t Ruby have blocks as objects?&lt;/p&gt;
+
+&lt;p&gt;Good question!&lt;/p&gt;
+
+&lt;h1 id=&quot;proc&quot;&gt;Proc&lt;/h1&gt;
+
+&lt;p&gt;Blocks aren’t objects, but Ruby has a sweet object called a &lt;strong&gt;Proc&lt;/strong&gt; which is exactly what you were looking for! A block, that can be harnessed into a variable, and called upon when needed!&lt;/p&gt;
+
+&lt;p&gt;Here’s how you’d create a new proc:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;prc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Proc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;element&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;element&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The proc, &lt;em&gt;is&lt;/em&gt; the block. When we try to create a proc without a block, we get an error.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;prc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Proc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; ArgumentError: tried to create Proc object without a block&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Now that we have a proc, how can we use this to our advantage?&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;prc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Proc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;add_or_subtract&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nil?&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;num1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num2&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;prc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Let’s take a look at this code. There’s quite a lot of things going on here.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Line 1&lt;/strong&gt;: Nothing new, we’re creating a &lt;code&gt;Proc&lt;/code&gt; object and storing it in a variable called &lt;code&gt;prc&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Line 3&lt;/strong&gt;: We’ve defined a method that takes &lt;code&gt;num1&lt;/code&gt;, &lt;code&gt;num2&lt;/code&gt;, and &lt;code&gt;prc&lt;/code&gt; as parameters. That’s sort of new, we’ll go over it.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Lines 4-5&lt;/strong&gt;: If &lt;code&gt;prc&lt;/code&gt; is &lt;code&gt;nil&lt;/code&gt; then return the result of &lt;code&gt;num1&lt;/code&gt; plus &lt;code&gt;num2&lt;/code&gt;. Pretty simple.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Lines 6-7&lt;/strong&gt;: If &lt;code&gt;prc&lt;/code&gt; is defined, then call the &lt;code&gt;call&lt;/code&gt; method on &lt;code&gt;prc&lt;/code&gt; and throw in &lt;code&gt;num1&lt;/code&gt; and &lt;code&gt;num2&lt;/code&gt;. Try taking a guess to what this does!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Let’s begin to sort this out case by case. The first case we’ll go over is I think the easiest to understand. The case where we pass in all variables like a good little programmer.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;add_or_subtract&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; 0&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The proc we passed in as &lt;code&gt;prc&lt;/code&gt; is not &lt;code&gt;nil&lt;/code&gt;, therefore, it executes line 7 by using the proc’s &lt;code&gt;call&lt;/code&gt; method. This method is straight forward in that all it’s doing is passing into the proc the arguments supplied in as parentheses. So essentially, our &lt;code&gt;prc.call(num1, num2)&lt;/code&gt; method looks like this in a block. &lt;code&gt;{ |num1, num2| num1 - 5 }&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now you might have noticed that we’re accepting one argument in our &lt;code&gt;prc&lt;/code&gt; variable, but we’re passing two parameters to it during the call. Good catch! However, that’s a neat feature of procs. They don’t care that we’re throwing in the wrong number of variables. It just executes the call using the first &lt;code&gt;n&lt;/code&gt; number of parameters it needs to execute it. The proc call won’t work if you don’t supply enough arguments.&lt;/p&gt;
+
+&lt;p&gt;Cool, awesome. Now let’s move on, but this time, let’s add one new character in our &lt;code&gt;add_or_subtract&lt;/code&gt; definition.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;prc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Proc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;add_or_subtract&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nil?&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;num1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num2&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;prc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;span style=&quot;color: gray&quot;&gt;&lt;em&gt;:If you don’t see it, shame on you! It’s in front of the &lt;code&gt;prc&lt;/code&gt; on line 3. The squiggly character called an ampersand.&lt;/em&gt;&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;What this does is it calls the &lt;code&gt;to_proc&lt;/code&gt; method on the variable. Our previous example worked, but what if we don’t always have a proc object to pass in as an argument? Or what if we wanted to do something other than subtract the first number by 5? We would have to create yet another proc object and then pass that in as an argument. There must be a handier way to do it. And there is! It’s the ampersand symbol that allows us to do just that.&lt;/p&gt;
+
+&lt;p&gt;So let’s say we don’t have an explicit proc object to pass into the method, but we do know what we want to do inside the block. We can write it like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;add_or_subtract&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; 3&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The ampersand makes passing the proc in as a variable optional, and looks for a block following the method call. If there is, then it stores the block into &lt;code&gt;prc&lt;/code&gt; so that we can use it for something else if we wanted to. If there isn’t, then it remains as &lt;code&gt;nil&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Similarly, we might never create a proc object before calling our method, and sometimes we want the prc to default into something if it doesn’t have a block following it. Here’s an example:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sort&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; [5, 4, 3, 2, 1]&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sort&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; [1, 2, 3, 4, 5]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Here’s what’s kind of going on behind the scenes:&lt;/p&gt;
+
+&lt;p&gt;&lt;span style=&quot;color: gray&quot;&gt;&lt;em&gt;:This implementation of sort below is bubble sort. Ruby’s built in sort method doesn’t use bubble sort, but for demonstration purposes, we’ll be using bubble sort.&lt;/em&gt;&lt;/span&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Array&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;prc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Proc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;sorted&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;false&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;until&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sorted&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;sorted&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt;
+
+      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;times&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+          &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+          &lt;span class=&quot;n&quot;&gt;sorted&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kp&quot;&gt;false&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;self&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Don’t worry if you don’t know what that does. The only thing you should take from our sort example is that it takes an &lt;code&gt;&amp;amp;prc&lt;/code&gt; parameter just like our method, and it uses the passed proc if it’s not &lt;code&gt;nil&lt;/code&gt;. If it is &lt;code&gt;nil&lt;/code&gt;, we set it to our own default proc. Because we have it set up like this, we don’t ever have to explicitly create a proc object before calling the method. Pretty neat.&lt;/p&gt;
+
+&lt;p&gt;You might have also noticed that we never &lt;code&gt;return&lt;/code&gt; inside a block. That’s because when we do, it’ll return an error.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sort&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; LocalJumpError: unexpected return&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Ruby doesn’t expect us to &lt;code&gt;return&lt;/code&gt; inside a block. The return value is implicit, meaning &lt;code&gt;array.sort { |num1, num2| num1 &amp;lt;=&amp;gt; num2 }&lt;/code&gt; will implicitly return -1, 0, or 1.&lt;/p&gt;
+
+&lt;p&gt;&lt;span style=&quot;color: gray&quot;&gt;&lt;em&gt;::There is a way to explicitly return from a proc using something called a lambda. However, I wont be going over lambdas in this post.&lt;/em&gt;&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Now that we’ve come this far, let’s go over some of the properties of procs and blocks.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Procs are objects in Ruby, blocks are not.&lt;/li&gt;
+  &lt;li&gt;Procs can be passed in as an optional argument using &lt;code&gt;&amp;amp;&lt;/code&gt;. It defaults to a block following the call on the method if it’s not passed in explicitly, or &lt;code&gt;nil&lt;/code&gt; if neither are supplied.&lt;/li&gt;
+  &lt;li&gt;Procs can take any number of arguments so long as it supplies &lt;strong&gt;enough&lt;/strong&gt; arguments.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I would say knowing procs and blocks cover 90% of all usage in basic Ruby, but there is one other form of proc, and one other way to access a block. The other form of a proc is called a lambda, and the other way to access a block is through &lt;code&gt;yield&lt;/code&gt;. I’ll only be going over &lt;code&gt;yield&lt;/code&gt; in this post.&lt;/p&gt;
+
+&lt;h1 id=&quot;yield&quot;&gt;Yield&lt;/h1&gt;
+
+&lt;p&gt;We know by now what a block looks like, how it takes parameters, and how it returns implicitly based on executing the code in the block. We also know how to set that block into a proc and access it using a proc, but there is another way using &lt;code&gt;yield&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Let’s go ahead and rewrite our initial &lt;code&gt;add_or_subtract&lt;/code&gt; method using &lt;code&gt;yield&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;add_or_subtract&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;block_given?&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;num1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num2&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Looks similar, but instead of using &lt;code&gt;prc.nil?&lt;/code&gt; we use &lt;code&gt;block_given?&lt;/code&gt;, and instead of using &lt;code&gt;prc.call(num1, num2)&lt;/code&gt; we use &lt;code&gt;yield(num1, num2)&lt;/code&gt;. If it looks like a duck, swims like a duck, and quacks like a duck, it probably is a duck, right? Not exactly. If we look back to the example where we used &lt;code&gt;&amp;amp;prc&lt;/code&gt;, Ruby didn’t care whether or not we assigned a block to it. But &lt;code&gt;yield&lt;/code&gt; is like a sensitive teen. Here it is in action, but we’ll modify our method a little to try and mimic the &lt;code&gt;&amp;amp;prc&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;add_or_subtract&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nil?&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;num1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num2&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;add_or_subtract&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; LocalJumpError: no block given (yield)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Okay, fine have it your way. I’ll give you a damn block.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;add_or_subtract&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; NoMethodError: undefined method &amp;#39;-&amp;#39; for nil:NilClass&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;GRRRRR… FINE.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;add_or_subtract&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;block_given?&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;yield&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;add_or_subtract&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; 0&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;You can see through this that &lt;code&gt;yield&lt;/code&gt; needs to meet pretty specific conditions, and if it doesn’t will throw errors. One advantage to yield, however, is that it processes the block (almost 2x) faster than a proc does. Which I guess is cool…&lt;/p&gt;
+
+&lt;p&gt;So there you have it! Procs and blocks are extremely useful once you understand how to implement it, but they can be a rather confusing topic for beginners. If I left you hanging with questions, feel free to contact me. I’m available by e-mail: hyungchulcho93@gmail.com. Ciao!&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;http://hyungccho.github.io/blog/knock-knock/&quot;&gt;Knock, knock!&lt;/a&gt; was originally published by Hyung C Cho at &lt;a href=&quot;http://hyungccho.github.io&quot;&gt;Coder.life&lt;/a&gt; on September 06, 2015.&lt;/p&gt;
   </content>
 </entry>
 
@@ -49,19 +322,19 @@ You can reach me through e-mail: hyungchulcho93@gmail.com!&lt;/p&gt;
 
 <entry>
   <title type="html"><![CDATA[reader, writer, and accessor]]></title>
-  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/attr-and-initialize/" />
-  <id>http://localhost:4000/blog/attr-and-initialize</id>
+  <link rel="alternate" type="text/html" href="http://hyungccho.github.io/blog/attr-and-initialize/" />
+  <id>http://hyungccho.github.io/blog/attr-and-initialize</id>
   <published>2015-09-05T12:39:55-07:00</published>
   <updated>2015-09-05T12:39:55-07:00</updated>
   <author>
     <name>Hyung C Cho</name>
-    <uri>http://localhost:4000</uri>
+    <uri>http://hyungccho.github.io</uri>
     <email>hyungccho93@gmail.com</email>
   </author>
   <content type="html">
     &lt;p&gt;How does an &lt;code&gt;attr_reader&lt;/code&gt; differ from an &lt;code&gt;attr_writer&lt;/code&gt;, but more specifically… what do they do? I remember asking myself
 this question when I was introduced to classes in Ruby. I’ll be going over their exact functions and purposes in a second,
-but here’s a short and sweet explanation:&lt;/p&gt;
+but here’s a short explanation:&lt;/p&gt;
 
 &lt;p&gt;When I make a card transaction of let’s say $1 (pretty sweet, I know), the merchant needs to &lt;strong&gt;first&lt;/strong&gt; check if I have
 sufficient funds in my bank account, and &lt;strong&gt;second&lt;/strong&gt; subtract that dollar from my account and add it onto his account.&lt;/p&gt;
@@ -90,9 +363,8 @@ And this is where &lt;code&gt;attr_reader&lt;/code&gt;, &lt;code&gt;attr_writer&
 &lt;p&gt;If I wanted to set &lt;code&gt;new_person&lt;/code&gt;’s name to something, I might try &lt;code&gt;new_person.name = &quot;The Terminator&quot;&lt;/code&gt;. But let’s see what happens
 when we try that.&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_person&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;The Terminator&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;ss&quot;&gt;NoMethodError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;undefined&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;method&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39; for #&amp;lt;Person:0x007feb0c2a1468&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s1&quot;&gt;from (pry):4:in __pry__&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;new_person&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;The Terminator&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; NoMethodError: undefined method name=&amp;#39; for #&amp;lt;Person:0x007feb0c2a1468&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Okay, but why? I mentioned earlier that we needed to a way to access information from an object, and that the reader and writer methods
 allow us to do just that.&lt;/p&gt;
@@ -117,14 +389,13 @@ allow us to do just that.&lt;/p&gt;
 
 &lt;p&gt;Awesome, now that we have that taken care of, let’s go give this guy a name.&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_person&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;The Terminator&amp;quot;&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;new_person&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;The Terminator&amp;quot;&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;The Terminator&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Cool. Neat. Sweet. Let’s ask him what his name is.&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_person&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
-&lt;span class=&quot;ss&quot;&gt;NoMethodError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;undefined&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;method&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39; for #&amp;lt;Person:0x007f8e4330a2e0 @name=&amp;quot;The Terminator&amp;quot;&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;s1&quot;&gt;from (pry):6:in __pry__&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;new_person&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; NoMethodError: undefined method name&amp;#39; for #&amp;lt;Person:0x007f8e4330a2e0 @name=&amp;quot;The Terminator&amp;quot;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;I don’t believe you. Ruby must be lying!&lt;/p&gt;
 
@@ -168,14 +439,13 @@ versa. Therefore, Ruby creates an easier and faster way to create both methods w
 
 &lt;p&gt;Running our test on our new code gives us…&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_person&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;The Terminator&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;The Terminator&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;new_person&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;The Terminator&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;new_person&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;The Terminator&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;new_person&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; &amp;quot;The Terminator&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Hurrah! It finally works! Now go and give our Terminator some extra features. Ayl bi bawk.&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/attr-and-initialize/&quot;&gt;reader, writer, and accessor&lt;/a&gt; was originally published by Hyung C Cho at &lt;a href=&quot;http://localhost:4000&quot;&gt;Coder.life&lt;/a&gt; on September 05, 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://hyungccho.github.io/blog/attr-and-initialize/&quot;&gt;reader, writer, and accessor&lt;/a&gt; was originally published by Hyung C Cho at &lt;a href=&quot;http://hyungccho.github.io&quot;&gt;Coder.life&lt;/a&gt; on September 05, 2015.&lt;/p&gt;
   </content>
 </entry>
 
@@ -183,74 +453,31 @@ versa. Therefore, Ruby creates an easier and faster way to create both methods w
   
 
 <entry>
-  <title type="html"><![CDATA[MathJax Example]]></title>
-  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/mathjax-example/" />
-  <id>http://localhost:4000/blog/mathjax-example</id>
-  <published>2015-08-10T05:08:50-07:00</published>
-  <updated>2015-08-10T05:08:50-07:00</updated>
+  <title type="html"><![CDATA[Hello, world!]]></title>
+  <link rel="alternate" type="text/html" href="http://hyungccho.github.io/blog/hello-world/" />
+  <id>http://hyungccho.github.io/blog/hello-world</id>
+  <published>2015-09-04T12:39:55-07:00</published>
+  <updated>2015-09-04T12:39:55-07:00</updated>
   <author>
     <name>Hyung C Cho</name>
-    <uri>http://localhost:4000</uri>
+    <uri>http://hyungccho.github.io</uri>
     <email>hyungccho93@gmail.com</email>
   </author>
   <content type="html">
-    &lt;p&gt;&lt;a href=&quot;http://www.mathjax.org/&quot;&gt;MathJax&lt;/a&gt; is a simple way of including Tex/LaTex/MathML based mathematics in HTML webpages. To get up and running you need to include the MathJax script in the header of your github pages page, and then write some maths. For LaTex, there are two delimiters you need to know about, one for block or displayed mathematics &lt;code&gt;\[ ... \]&lt;/code&gt;, and the other for inline mathematics &lt;code&gt;\( ... \)&lt;/code&gt;.&lt;/p&gt;
+    &lt;p&gt;I’m now two weeks into my 12-week coding bootcamp at App Academy, and the experience thus far has been amazing. I’m loving all
+the new additions to the curriculum to make it more difficult, and meeting everyone involved has been nothing but fantastic. We keep
+a required blog for App Academy through Tumblr, but I’ve decided to try and start my own technical blog on coding.&lt;/p&gt;
 
-&lt;h2 id=&quot;usage&quot;&gt;Usage&lt;/h2&gt;
+&lt;p&gt;I’ll be using GitHub pages along with Jekyll to upload posts and update my blog. I’d just found out about this feature, and I have to say
+that I’m impressed. The implementation is pretty seamless, and straight forward enough for a beginner like me to start with little to no
+trouble.&lt;/p&gt;
 
-&lt;p&gt;To enable MathJax support be sure Kramdown is your Markdown flavor of choice and MathJax is set to true in your &lt;code&gt;_config.yml&lt;/code&gt; file.&lt;/p&gt;
+&lt;p&gt;If you’re interested in chatting, whether it’s about my App Academy experience, or coding, or anything… Don’t hesitate to contact me!
+You can reach me through e-mail: hyungchulcho93@gmail.com!&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;markdown: kramdown
-mathjax: true
-&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&quot;onward-matey&quot;&gt;Onward, matey!&lt;/h2&gt;
 
-&lt;pre&gt;&lt;code&gt;Here is an example MathJax inline rendering \\( 1/x^{2} \\), and here is a block rendering: 
-\\[ \frac{1}{n^{2}} \\]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Here is an example MathJax inline rendering \( 1/x^{2} \), and here is a block rendering: 
-\[ \frac{1}{n^{2}} \]&lt;/p&gt;
-
-&lt;p&gt;The only thing to look out for is the escaping of the backslash when using markdown, so the delimiters become &lt;code&gt;\\[ ... \\]&lt;/code&gt; and &lt;code&gt;\\( ... \\)&lt;/code&gt; for inline and block maths respectively.&lt;/p&gt;
-
-    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/mathjax-example/&quot;&gt;MathJax Example&lt;/a&gt; was originally published by Hyung C Cho at &lt;a href=&quot;http://localhost:4000&quot;&gt;Coder.life&lt;/a&gt; on August 10, 2015.&lt;/p&gt;
-  </content>
-</entry>
-
-
-  
-
-<entry>
-  <title type="html"><![CDATA[Hello World]]></title>
-  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/hello-world/" />
-  <id>http://localhost:4000/blog/hello-world</id>
-  <published>2014-08-08T12:39:55-07:00</published>
-  <updated>2014-08-08T12:39:55-07:00</updated>
-  <author>
-    <name>Hyung C Cho</name>
-    <uri>http://localhost:4000</uri>
-    <email>hyungccho93@gmail.com</email>
-  </author>
-  <content type="html">
-    &lt;p&gt;You’ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory - edit this post and re-build (or run with the &lt;code&gt;-w&lt;/code&gt; switch) to see your changes!
-To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention: YYYY-MM-DD-name-of-post.ext.&lt;/p&gt;
-
-&lt;h2 id=&quot;sample-heading&quot;&gt;Sample Heading&lt;/h2&gt;
-
-&lt;h3 id=&quot;sample-heading-2&quot;&gt;Sample Heading 2&lt;/h3&gt;
-
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Tom&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &amp;#39;Hi, Tom&amp;#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;.&lt;/p&gt;
-
-
-    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/hello-world/&quot;&gt;Hello World&lt;/a&gt; was originally published by Hyung C Cho at &lt;a href=&quot;http://localhost:4000&quot;&gt;Coder.life&lt;/a&gt; on August 08, 2014.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;http://hyungccho.github.io/blog/hello-world/&quot;&gt;Hello, world!&lt;/a&gt; was originally published by Hyung C Cho at &lt;a href=&quot;http://hyungccho.github.io&quot;&gt;Coder.life&lt;/a&gt; on September 04, 2015.&lt;/p&gt;
   </content>
 </entry>
 

@@ -2,8 +2,16 @@
 
   
     {
-      "title"			: "Hello, world!",
-      "link"			: "http://localhost:4000/blog/hello-world/",
+      "title"			: "Sort War!",
+      "link"			: "http://hyungccho.github.io/blog/data-structures/",
+      "excerpt"		: ""
+    }
+  
+
+  
+    ,{
+      "title"			: "Knock, knock!",
+      "link"			: "http://hyungccho.github.io/blog/knock-knock/",
       "excerpt"		: ""
     }
   
@@ -11,23 +19,15 @@
   
     ,{
       "title"			: "reader, writer, and accessor",
-      "link"			: "http://localhost:4000/blog/attr-and-initialize/",
+      "link"			: "http://hyungccho.github.io/blog/attr-and-initialize/",
       "excerpt"		: ""
     }
   
 
   
     ,{
-      "title"			: "MathJax Example",
-      "link"			: "http://localhost:4000/blog/mathjax-example/",
-      "excerpt"		: ""
-    }
-  
-
-  
-    ,{
-      "title"			: "Hello World",
-      "link"			: "http://localhost:4000/blog/hello-world/",
+      "title"			: "Hello, world!",
+      "link"			: "http://hyungccho.github.io/blog/hello-world/",
       "excerpt"		: ""
     }
   
@@ -43,17 +43,15 @@
   
     ,{
       "title"			: "Can you outrun me?",
-      "link"			: "http://localhost:4000/about/",
+      "link"			: "http://hyungccho.github.io/about/",
       "excerpt"		: ""
     }
   
 
   
-
-  
     ,{
       "title"			: "Theme Setup",
-      "link"			: "http://localhost:4000/theme-setup/",
+      "link"			: "http://hyungccho.github.io/theme-setup/",
       "excerpt"		: "Instructions on how to install and customize the Jekyll theme So Simple."
     }
   
