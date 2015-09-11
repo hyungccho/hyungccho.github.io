@@ -23,6 +23,51 @@ We won't be focusing on time complexities in this post (We'll go over Big O and 
 The four sorts we'll do are **insertion sort**, **bubble sort**, **merge sort**, and **quick sort**.
 
 #Insertion Sort
+
+The idea behind insertion sort is to go through each element starting from the second element (the element at index 1), and iteratively compare it to preceding elements of the array until one of two conditions are met. When the current element finds a value that's lower than it, or when it reaches the beginning of the data set, it **inserts** itself into the respective position and the same loop commences again for the next value in the data. Here it is in Ruby:
+
+{% highlight ruby %}
+class Array
+  def insertion_sort!
+    (1..self.length - 1).each do |i|
+      current_value = self[i]
+
+      j = i - 1
+      while j >= 0 && self[j] > current_value
+        self[j + 1] = self[j]
+        j -= 1
+      end
+
+      self[j + 1] = current_value
+    end
+    self
+  end
+end
+{% endhighlight %}
+
+If you notice, the value at index `i` represents our `current_value`, and we iterate through all its preceding elements represented by a decrementing `j`.
+
 #Bubble Sort
+
+{% highlight ruby %}
+class Array
+  def bubble_sort!
+    sorted = false
+    until sorted
+      sorted = true
+
+      (self.length - 1).times do |i|
+        if self[i] > self[i + 1]
+          self[i], self[i + 1] = self[i + 1], self[i]
+          sorted = false
+        end
+      end
+    end
+
+    self
+  end
+end
+{% endhighlight }
+end
 #Merge Sort
 #Quick Sort
