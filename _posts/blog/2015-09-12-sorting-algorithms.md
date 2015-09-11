@@ -26,7 +26,7 @@ The four sorts we'll do are **insertion sort**, **bubble sort**, **merge sort**,
 
 The idea behind insertion sort is to go through each element starting from the second element (the element at index 1), and iteratively compare it to preceding elements of the array until one of two conditions are met. When the current element finds a value that's lower than it, or when it reaches the beginning of the data set, it **inserts** itself into the respective position and the same loop commences again for the next value in the data. Here it is in Ruby:
 
-```rb
+{% highlight ruby %}
 class Array
   def insertion_sort!
     (1..self.length - 1).each do |i|
@@ -43,9 +43,9 @@ class Array
     self
   end
 end
-```
+{% endhighlight %}
 
-If you notice, the value at index `i` represents our `current_value`, and we iterate through all its preceding elements represented by a decrementing `j`.
+You might have already noticed that the value at index `i` represents our `current_value`, and we iterate through all its preceding elements represented by a decrementing `j`.
 
 #Bubble Sort
 
