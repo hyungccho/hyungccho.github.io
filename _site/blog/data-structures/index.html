@@ -1,0 +1,245 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Sort War! &#8211; Coder.life</title>
+
+<meta name="keywords" content="">
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Sort War!">
+
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://hyungccho.github.io/images/site-logo.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sort War!">
+
+<meta property="og:url" content="http://hyungccho.github.io/blog/data-structures/">
+<meta property="og:site_name" content="Coder.life">
+
+
+
+
+
+<link rel="canonical" href="http://hyungccho.github.io/blog/data-structures/">
+<link href="http://hyungccho.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="Coder.life Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://hyungccho.github.io/assets/css/main.css">
+<!-- Webfonts -->
+<script src="https://use.edgefonts.net/source-sans-pro:n2,i2,n3,i3,n4,i4,n6,i6,n7,i7,n9,i9;source-code-pro:n4,n7;volkhov.js"></script>
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+  <script src="http://hyungccho.github.io/assets/js/vendor/html5shiv.min.js"></script>
+  <script src="http://hyungccho.github.io/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="http://hyungccho.github.io/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+
+<!-- MathJax -->
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="http://hyungccho.github.io/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="http://hyungccho.github.io/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="http://hyungccho.github.io/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://hyungccho.github.io/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://hyungccho.github.io/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://hyungccho.github.io/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body id="post">
+
+<div class="navigation-wrapper">
+	<nav role="navigation" id="site-nav" class="animated drop">
+	    <ul>
+      
+		    
+		        
+		    
+		    <li><a href="http://hyungccho.github.io/about/" >About</a></li>
+		  
+		    
+		        
+		    
+		    <li><a href="http://hyungccho.github.io/blog/" >Blog</a></li>
+		  
+	    </ul>
+	</nav>
+</div><!-- /.navigation-wrapper -->
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+
+<header class="masthead">
+	<div class="wrap">
+      
+  		<a href="http://hyungccho.github.io/" class="site-logo" rel="home" title="Coder.life"><img src="http://hyungccho.github.io/images/site-logo.png" width="200" height="200" alt="Coder.life logo" class="animated fadeInDown"></a>
+      
+      <h1 class="site-title animated fadeIn"><a href="http://hyungccho.github.io/">Coder.life</a></h1>
+		<h2 class="site-description animated fadeIn" itemprop="description">A Github blog for all...most all things Ruby!</h2>
+	</div>
+</header><!-- /.masthead -->
+
+<div class="js-menu-screen menu-screen"></div>
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    
+    <div class="entry-wrapper">
+      <header class="entry-header">
+        <span class="entry-tags"></span>
+        
+          <h1 class="entry-title">Sort War!</h1>
+        
+      </header>
+      <footer class="entry-meta">
+        
+        
+        
+          <img src="http://hyungccho.github.io/images/draft1.jpg" class="bio-photo" alt="Hyung C Cho bio photo"></a>
+        
+        <span class="author vcard">By <span class="fn">Hyung C Cho</span></span>
+        <span class="entry-date date published"><time datetime="2015-09-12T12:39:55-07:00"><i class="fa fa-calendar-o"></i> September 12, 2015</time></span>
+        
+        
+        
+        
+      </footer>
+      <div class="entry-content">
+        <h1 id="introduction">Introduction</h1>
+
+<p>Being able to control the way data is sorted is a powerful tool for almost any situation. Let’s say that I own a company of five people. Christmas is approaching and our sales have climbed 1000% in the last year (That would be quite nice…). And as a bonus for hard work, I want to give my five loyal employees a bonus depending on how long they’ve been with the company. Okay, sounds simple enough. If I wanted to do this, I can possibly look in my employee database, and <strong>sort</strong> them by the date they started working to determine their bonuses. But then again… It is only five people. I might just remember the general timeframe they came in. Fine. Let’s fast forward five years…</p>
+
+<p>…Now I have a hundred employees. See where this is going? There’s no way I’ll remember when everyone started working. Heck, I’m not sure I’ll know everyone’s name at this point. In this situation, having a nifty database of employees that I can sort would allow me to hand out bonuses accordingly come Christmas. Cool. But somewhere down the line…</p>
+
+<p>…Maybe I have a million employees. That’s right. A million. At this point, I probably know all of five people who work in the company, and if I’m still responsible for determining and handing out bonuses, I’ve done something wrong. However, let’s say I’m still responsible, and I haven’t updated my sort method to accompany this growth. I’m using some slow sort method that might’ve worked fine when I had a hundred employees, but now I have a million. It takes a whole day’s worth of processing to sort properly. That is unacceptable. Bonuses must be given! Because of this, I’ll need a much faster sorting algorithm in work to match my needs. So let’s go over some of the basic and quite commonly used sorting algorithms.</p>
+
+<p>We won’t be focusing on time complexities in this post (We’ll go over Big O and each sorting algorithm’s respective time complexities in the next post), but rather just the underlying algorithms behind each sorting technique.</p>
+
+<p>The four sorts we’ll do are <strong>insertion sort</strong>, <strong>bubble sort</strong>, <strong>merge sort</strong>, and <strong>quick sort</strong>.</p>
+
+<h1 id="insertion-sort">Insertion Sort</h1>
+
+<p>The idea behind insertion sort is to go through each element starting from the second element (the element at index 1), and iteratively compare it to preceding elements of the array until one of two conditions are met. When the current element finds a value that’s lower than it, or when it reaches the beginning of the data set, it <strong>inserts</strong> itself into the respective position and the same loop commences again for the next value in the data. Here it is in Ruby:</p>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Array</span>
+  <span class="k">def</span> <span class="nf">insertion_sort!</span>
+    <span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.self</span><span class="o">.</span><span class="n">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+      <span class="n">current_value</span> <span class="o">=</span> <span class="nb">self</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
+
+      <span class="n">j</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
+      <span class="k">while</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="nb">self</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">current_value</span>
+        <span class="nb">self</span><span class="o">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="nb">self</span><span class="o">[</span><span class="n">j</span><span class="o">]</span>
+        <span class="n">j</span> <span class="o">-=</span> <span class="mi">1</span>
+      <span class="k">end</span>
+
+      <span class="nb">self</span><span class="o">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">current_value</span>
+    <span class="k">end</span>
+    <span class="nb">self</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div>
+
+<p>If you notice, the value at index <code>i</code> represents our <code>current_value</code>, and we iterate through all its preceding elements represented by a decrementing <code>j</code>.</p>
+
+<h1 id="bubble-sort">Bubble Sort</h1>
+
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">class</span> <span class="nc">Array</span>
+  <span class="k">def</span> <span class="nf">bubble_sort!</span>
+    <span class="n">sorted</span> <span class="o">=</span> <span class="kp">false</span>
+    <span class="k">until</span> <span class="n">sorted</span>
+      <span class="n">sorted</span> <span class="o">=</span> <span class="kp">true</span>
+
+      <span class="p">(</span><span class="nb">self</span><span class="o">.</span><span class="n">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">i</span><span class="o">|</span>
+        <span class="k">if</span> <span class="nb">self</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">&gt;</span> <span class="nb">self</span><span class="o">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">]</span>
+          <span class="nb">self</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">,</span> <span class="nb">self</span><span class="o">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="nb">self</span><span class="o">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="o">]</span><span class="p">,</span> <span class="nb">self</span><span class="o">[</span><span class="n">i</span><span class="o">]</span>
+          <span class="n">sorted</span> <span class="o">=</span> <span class="kp">false</span>
+        <span class="k">end</span>
+      <span class="k">end</span>
+    <span class="k">end</span>
+
+    <span class="nb">self</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre></div>
+
+<p>end
+#Merge Sort
+#Quick Sort</p>
+
+        
+      </div><!-- /.entry-content -->
+    </div><!-- /.entry-wrapper -->
+    <nav class="pagination" role="navigation">
+      
+        <a href="http://hyungccho.github.io/blog/knock-knock/" class="btn" title="Knock, knock!">Previous</a>
+      
+      
+    </nav><!-- /.pagination -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo" class="entry-wrapper">
+    
+
+<span>&copy; 2015 Hyung C Cho. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="http://mademistakes.com/so-simple/" rel="nofollow">So Simple Theme</a>.</span>
+<div class="social-icons">
+	
+	
+	
+	
+	
+	
+	
+	
+	
+  
+	
+  <a href="http://hyungccho.github.io/feed.xml" title="Atom/RSS feed"><i class="fa fa-rss-square fa-2x"></i></a>
+</div><!-- /.social-icons -->
+
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script type="text/javascript">
+  var BASE_URL = 'http://hyungccho.github.io';
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://hyungccho.github.io/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="http://hyungccho.github.io/assets/js/scripts.min.js"></script>
+
+
+
+
+</body>
+</html>
