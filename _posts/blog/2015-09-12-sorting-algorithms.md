@@ -52,7 +52,9 @@ If you're a visual learner, this resource will be amazing: [Bubble Sort](http://
 
 #Insertion Sort
 
-The idea behind insertion sort is to go through each element starting from the second element (the element at index 1), and iteratively compare it to preceding elements of the array until one of two conditions are met. When the current element finds a value that's lower than it, or when it reaches the beginning of the array, it **inserts** itself into the respective position and the same loop commences again for the element at index + 1. Here it is in Ruby:
+The idea behind insertion sort is to go through each element starting from the second element (the element at index 1), and iteratively compare it to preceding elements of the array until one of two conditions are met.
+
+When the current element finds a value that's lower than it, or when it reaches the beginning of the array, it **inserts** itself into the respective position and the same loop commences again for the element at index + 1. Here it is in Ruby:
 
 {% highlight ruby %}
 class Array
@@ -161,6 +163,7 @@ end
 {% endhighlight %}
 
 In case you're unsure what our `take(1)` and `drop(1)` is doing:
+
 * [Array#take](http://ruby-doc.org/core-2.2.0/Array.html#method-i-take)
 * [Array#drop](http://ruby-doc.org/core-2.2.0/Array.html#method-i-drop)
 
