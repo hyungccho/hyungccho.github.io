@@ -79,7 +79,7 @@ Once again, algomation in action: [Insertion Sort](http://www.algomation.com/pla
 
 #Merge Sort
 
-Merge sort is a highly effective sorting algorithm that involves recursion. It takes an array, and constantly splits it in half until each half has only element in it. Once you have it dwindled down to arrays of one element, it makes its way back up to the full array by merging them back in the correct order.
+Merge sort is another sorting algorithm that involves recursion. It takes an array, and constantly splits it in half until each half has only element in it. Once you have it dwindled down to arrays of one element, it makes its way back up to the full array by merging them back in the correct order.
 
 {% highlight ruby %}
 class Array
@@ -132,24 +132,42 @@ You can see from this example that no sorting is done until every array is of le
 
 #Quick Sort
 
+Quick sort is similar to merge sort in terms of performance, with a slight edge given with good implementation. This is because of the pivot implementation for this algorithm. Here's how it works.
+
+`quick_sort!` picks a pivot point (in this case the first value of the array for simplicity), and drops out of the array. We loop through the rest of the array inserting the elements into two arrays based on whether the value is greater or lower than our `pivot`. When we have these two arrays populated, we call `quick_sort!` on both the arrays recursively, which then repeats these steps.
+
+Once the arrays are split up into arrays consisting of only one element, all the greater and lower arrays add back up to our full array.
+
 {% highlight ruby %}
 class Array
   def quick_sort!
     return self if self.length < 2
 
     pivot = self.take(1)
-    smaller = []
-    bigger = []
+    lower = []
+    greater = []
 
     self.drop(1).each do |el|
       if el < pivot.first
-        smaller << el
+        lower << el
       else
-        bigger << el
+        greater << el
       end
     end
 
-    smaller.quick_sort! + pivot + bigger.quick_sort!
+    lower.quick_sort! + pivot + greater.quick_sort!
   end
 end
 {% endhighlight %}
+
+In case you're unsure what our `take(1)` and `drop(1)` is doing:
+* [Array#take](http://ruby-doc.org/core-2.2.0/Array.html#method-i-take)
+* [Array#drop](http://ruby-doc.org/core-2.2.0/Array.html#method-i-drop)
+
+There are a few different ways quick sort is implemented. You can use a quite inefficient `pivot` as I did, or you can set it to the median of the array, or just the middle value of the array. I purposely did not put up a visualization for quick sort, because I couldn't find anything that clearly shows what's going on.
+
+####There it is!
+
+There are many different sorting algorithms out there, but these are the four that I've decided to go over. I'll be going over Big O, and then each algorithm's time complexities in the future. These algorithms are *sorted* based on speed and efficiency. Can you guess which end is which?
+
+Once again, if you have any questions or comments about anything code related I'll be happy to chat!
