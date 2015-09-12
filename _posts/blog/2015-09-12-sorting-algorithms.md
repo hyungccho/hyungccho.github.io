@@ -46,7 +46,7 @@ end
 
 Taking a look at our code shows us two loops. The outer loop `until sorted` and the inner loop `(self.length - 1).times`.
 
-What we're doing with the first one is saying "Hey Ruby, until you're told that the array is sorted, keep looping through". This trigger comes in the form of a boolean variable `sorted`. The inner loop executes itself `self.length - 1` times`, and if any pair was not sorted during this run through the array, we change the `sorted` variable back to `false`.
+What we're doing with the first one is saying "Hey Ruby, until you're told that the array is sorted, keep looping through". This trigger comes in the form of a boolean variable `sorted`. The inner loop executes itself `self.length - 1` times, and if any pair was not sorted during this run through the array, we change the `sorted` variable back to `false`.
 
 If you're a visual learner, this resource will be amazing: [Bubble Sort](http://www.algomation.com/player?algorithm=541a6ea7a7fe980200089c5e)
 
@@ -79,6 +79,8 @@ Once again, algomation in action: [Insertion Sort](http://www.algomation.com/pla
 
 #Merge Sort
 
+Merge sort is a highly effective sorting algorithm that involves recursion. It takes an array, and constantly splits it in half until each half has only element in it. Once you have it dwindled down to arrays of one element, it makes its way back up to the full array by merging them back in the correct order.
+
 {% highlight ruby %}
 class Array
   def merge_sort!
@@ -86,7 +88,7 @@ class Array
 
     mid = self.length / 2
     left = self[0...mid]
-    right = self[mid..(self.length - 1)]
+    right = self[mid..-1]
 
     merge!(left.merge_sort!, right.merge_sort!)
   end
@@ -109,6 +111,24 @@ class Array
   end
 end
 {% endhighlight %}
+
+You can see we have two methods that combine to do the work of `merge_sort!`. Starting from the top, we split the array into two halves, expressed by:
+
+{% highlight ruby %}
+mid = self.length / 2
+left = self[0...mid]
+right = self[mid..-1]
+{% endhighlight %}
+
+We then call our `merge_sort!` recursively onto each half of our array, and finish it off by calling `merge!` on these two arrays.
+
+Let's take a look at our helper method: `merge!`.
+
+`merge!` takes in two arrays as arguments (which will be our halves) and sorts them by `shift`ing off the lower of the two first elements of the array. We concatenate the three arrays which ensures that our array will be sorted into one array, and return it.
+
+This visual example might help understand it: [Merge Sort](http://www.algomation.com/player?algorithm=551321f6e1b6fa0300aae4d0)
+
+You can see from this example that no sorting is done until every array is of length 1. This is because we're calling our `merge_sort!` recursively with the base case being `return self if self.length < 2`.
 
 #Quick Sort
 
