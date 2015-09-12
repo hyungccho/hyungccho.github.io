@@ -10,8 +10,6 @@ image:
 date: 2015-09-12T15:39:55-04:00
 ---
 
-#Introduction
-
 Being able to control the way data is sorted is a powerful tool for almost any situation. Let's say that I own a company of five people. Christmas is approaching and our sales have climbed 1000% in the last year (That would be quite nice...). And as a bonus for hard work, I want to give my five loyal employees a bonus depending on how long they've been with the company. Okay, sounds simple enough. If I wanted to do this, I can possibly look in my employee database, and **sort** them by the date they started working to determine their bonuses. But then again... It is only five people. I might just remember the general timeframe they came in. Fine. Let's fast forward five years...
 
 ...Now I have a hundred employees. See where this is going? There's no way I'll remember when everyone started working. Heck, I'm not sure I'll know everyone's name at this point. In this situation, having a nifty database of employees that I can sort would allow me to hand out bonuses accordingly come Christmas. Cool. But somewhere down the line...
@@ -20,11 +18,41 @@ Being able to control the way data is sorted is a powerful tool for almost any s
 
 We won't be focusing on time complexities in this post (We'll go over Big O and each sorting algorithm's respective time complexities in the next post), but rather just the underlying algorithms behind each sorting technique.
 
-The four sorts we'll do are **insertion sort**, **bubble sort**, **merge sort**, and **quick sort**.
+The four sorts we'll do are **bubble sort**, **insertion sort**, **merge sort**, and **quick sort**.
+
+#Bubble Sort
+
+Bubble sort, one of the most simple sorting algorithms, repeatedly loops through the array, comparing each pair of adjacent elements, and sorts them if they are not ordered. Here's the code:
+
+{% highlight ruby %}
+class Array
+  def bubble_sort!
+    sorted = false
+    until sorted
+      sorted = true
+
+      (self.length - 1).times do |i|
+        if self[i] > self[i + 1]
+          self[i], self[i + 1] = self[i + 1], self[i]
+          sorted = false
+        end
+      end
+    end
+
+    self
+  end
+end
+{% endhighlight %}
+
+Taking a look at our code shows us two loops. The outer loop `until sorted` and the inner loop `(self.length - 1).times`.
+
+What we're doing with the first one is saying "Hey Ruby, until you're told that the array is sorted, keep looping through". This trigger comes in the form of a boolean variable `sorted`. The inner loop executes itself `self.length - 1` times`, and if any pair was not sorted during this run through the array, we change the `sorted` variable back to `false`.
+
+If you're a visual learner, this resource will be amazing: [Bubble Sort](http://www.algomation.com/player?algorithm=541a6ea7a7fe980200089c5e)
 
 #Insertion Sort
 
-The idea behind insertion sort is to go through each element starting from the second element (the element at index 1), and iteratively compare it to preceding elements of the array until one of two conditions are met. When the current element finds a value that's lower than it, or when it reaches the beginning of the data set, it **inserts** itself into the respective position and the same loop commences again for the next value in the data. Here it is in Ruby:
+The idea behind insertion sort is to go through each element starting from the second element (the element at index 1), and iteratively compare it to preceding elements of the array until one of two conditions are met. When the current element finds a value that's lower than it, or when it reaches the beginning of the array, it **inserts** itself into the respective position and the same loop commences again for the element at index + 1. Here it is in Ruby:
 
 {% highlight ruby %}
 class Array
@@ -47,27 +75,61 @@ end
 
 You might have already noticed that the value at index `i` represents our `current_value`, and we iterate through all its preceding elements represented by a decrementing `j`.
 
-#Bubble Sort
+Once again, algomation in action: [Insertion Sort](http://www.algomation.com/player?algorithm=5414f43062a6d502003341bc)
+
+#Merge Sort
 
 {% highlight ruby %}
 class Array
-  def bubble_sort!
-    sorted = false
-    until sorted
-      sorted = true
+  def merge_sort!
+    return self if self.length < 2
 
-      (self.length - 1).times do |i|
-        if self[i] > self[i + 1]
-          self[i], self[i + 1] = self[i + 1], self[i]
-          sorted = false
-        end
+    mid = self.length / 2
+    left = self[0...mid]
+    right = self[mid..(self.length - 1)]
+
+    merge!(left.merge_sort!, right.merge_sort!)
+  end
+
+  def merge!(arr1, arr2)
+    result = []
+
+    until arr1.empty? || arr2.empty?
+      if arr1.first < arr2.first
+        result << arr1.shift
+      elsif arr1.first > arr2.first
+        result << arr2.shift
+      else
+        result << arr1.shift
+        result << arr2.shift
       end
     end
 
-    self
+    result.concat(arr1).concat(arr2)
   end
 end
 {% endhighlight %}
-end
-#Merge Sort
+
 #Quick Sort
+
+{% highlight ruby %}
+class Array
+  def quick_sort!
+    return self if self.length < 2
+
+    pivot = self.take(1)
+    smaller = []
+    bigger = []
+
+    self.drop(1).each do |el|
+      if el < pivot.first
+        smaller << el
+      else
+        bigger << el
+      end
+    end
+
+    smaller.quick_sort! + pivot + bigger.quick_sort!
+  end
+end
+{% endhighlight %}
