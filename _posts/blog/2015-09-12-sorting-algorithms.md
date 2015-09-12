@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Sort War!
+title: Sort Warz
 modified:
 categories: blog
 excerpt:
