@@ -26,4 +26,4 @@ We will only focus on Big O in the post. It's the most relatable notation for ou
 
 #Big O
 
-[Graph of Big O Runtimes](../images/big-complexity.png)
+![Graph of Big O Runtimes]({{ site.url }}/images/big-o-complexity.png)
