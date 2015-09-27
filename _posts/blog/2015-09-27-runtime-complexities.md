@@ -10,8 +10,6 @@ image:
 date: 2015-09-27T15:39:55-04:00
 ---
 
-**Note:** This post will use sorting algorithm examples from a previous post that I made.
-
 #Time Complexity
 
 What exactly is a time complexity, and why are people so obsessed with it? By definition, a time complexity measures the increase in an algorithm's operations **relative** to the growth of the input size. Don't worry about exactly what this means. We'll get to it soon.
@@ -78,7 +76,7 @@ This is O(n<sup>2</sup>) time. If we have 2 elements in `arr`, we will have to p
 
 ![Graph of Big O Runtimes](https://s3.amazonaws.com/grapher/exports/sr4wt8ve1f.png)
 
-As you can see, our x-axis represents the number of elements in our data set, and our y-axis represents the number of operations performed to handle a given set.
+As you can see, our x-axis represents the number of elements in our data set, and our y-axis represents the number of operations performed to handle a given set. Can you guess which line represents which?
 
 ##Big O is represented by its significant term
 
@@ -98,7 +96,7 @@ end
 
 `puts` is our sole operation in this method, but now we're printing the first element once in addition to all of its pairs. Now the function to represent this algorithm SHOULD be n<sup>2</sup> + n, but it's still represented as O(n<sup>2</sup>). Why is this? Let's take a look at how this additional O(n) affects our algorithm when it gets huge.
 
-Where n == 10000,
+Where `n = 10000`,
 O(n<sup>2</sup>): 100,000,000 operations
 O(n<sup>2</sup> + n): 100,010,000 operations
 
@@ -124,7 +122,7 @@ def output_first_element(arr)
 end
 {% endhighlight %}
 
-Now our constant time function should be represented by O(5), and in this particular case it might not matter too much, but what if one operation in a different situation took a significant amount of time?
+Now our constant time function should be represented by O(5) but Big O treats it the same as O(1), and in this particular case it might not matter too much, but what if one operation in a different situation took a significant amount of time?
 
 To imitate this, let's add a sleep to both of our methods.
 
