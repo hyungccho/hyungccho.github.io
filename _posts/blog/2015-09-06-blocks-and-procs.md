@@ -55,7 +55,7 @@ Good question!
 
 #Proc
 
-Blocks aren't objects, but Ruby has a sweet object called a **Proc** which is exactly what you were looking for! A block, that can be harnessed into a variable, and called upon when needed!
+Blocks aren't objects, but Ruby has a sweet object called a **Proc** which is exactly what you were looking for! A block, that can be harnessed into a variable, and called upon when needed.
 
 Here's how you'd create a new proc:
 
