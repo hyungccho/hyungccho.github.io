@@ -36,6 +36,43 @@ There are seven main functions when describing Big O:
 * Exponential Time: O(2<sup>n</sup>)
 * Factorial Time: O(n!)
 
+Let's go over some examples.
+
+####Constant Time
+
+{% highlight ruby %}
+def output_first_element(arr)
+  puts arr.first
+end
+{% endhighlight %}
+
+In this example, no matter how small or big our `arr` is, our function would perform the same number of operations.
+
+####Linear Time
+
+{% highlight ruby %}
+def output_every_element(arr)
+  arr.each do |el|
+    puts el
+  end
+end
+{% endhighlight %}
+
+You can see that in linear time, the amount of operations grows *linearly* relative to the number of elements. If there are a thousand elements in the array, there will be a thousand operations.
+
+####Quadratic Time
+
+{% highlight ruby %}
+def output_every_pair_of_elements(arr)
+  arr.each do |first_element|
+    arr.each do |second_element|
+      puts "#{first_element}#{second_element}"
+    end
+  end
+end
+{% endhighlight %}
+
+This is O(n<sup>2</sup>) time. If we have 2 elements in `arr`, we will have to print 4 times. If we have 10 elements, 100 times. 100 elements? 10000 times. You can see how this gets out of control pretty quickly.
 ![Graph of Big O Runtimes](https://s3.amazonaws.com/grapher/exports/sr4wt8ve1f.png)
 
 As you can see, our x-axis represents the number of elements in our data set, and our y-axis represents the number of operations performed to handle a given set. Sadly, I wasn't able to get the equations on the graphs but let's go over them:
