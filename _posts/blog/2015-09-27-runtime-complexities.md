@@ -26,6 +26,12 @@ We will only focus on Big O in the post. It's the most relatable notation for ou
 
 #Big O
 
+There are seven main functions when describing Big O:
+* Constant Time: O(1)
+* Logarithmic Time: O(log n)
+* Linear Time: O(n)
+* Linearithmic Time: O(n log n)
+* Quadratic Time: O(n<sup>2</sup>)
 ![Graph of Big O Runtimes](https://s3.amazonaws.com/grapher/exports/sr4wt8ve1f.png)
 
-<a title="View with the Desmos Graphing Calculator" href="https://www.desmos.com/calculator/zlo12jrc0w">  <img src="https://s3.amazonaws.com/calc_thumbs/production/zlo12jrc0w.png" width="200px" height="200px"     style="border:1px solid #ccc; border-radius:5px"  /></a>
+As you can see, our x-axis represents the number of elements in our data set, and our y-axis represents the number of operations performed to handle a given set. Sadly, I wasn't able to get the equations on the graphs but let's go over them:
