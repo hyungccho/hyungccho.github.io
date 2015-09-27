@@ -26,6 +26,6 @@ We will only focus on Big O in the post. It's the most relatable notation for ou
 
 #Big O
 
-![Graph of Big O Runtimes](https://s3.amazonaws.com/grapher/exports/frgdhzab7j.png)
+![Graph of Big O Runtimes](https://s3.amazonaws.com/grapher/exports/sr4wt8ve1f.png)
 
-As you can see, our y-axis represents the number of operations, and the x-axis represents
+<a title="View with the Desmos Graphing Calculator" href="https://www.desmos.com/calculator/zlo12jrc0w">  <img src="https://s3.amazonaws.com/calc_thumbs/production/zlo12jrc0w.png" width="200px" height="200px"     style="border:1px solid #ccc; border-radius:5px"  /></a>
